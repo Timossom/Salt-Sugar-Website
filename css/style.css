@@ -1,0 +1,518 @@
+/* ============================================================
+   Koines rithiseis gia olo to site
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, sans-serif; /* geniko font */
+}
+
+html {
+    scroll-behavior: smooth; /* oles oi metakinisis smooth */
+}
+
+body {
+    background: #111; /* skouro thema */
+    color: #eee;      /* basiko text xroma */
+}
+
+
+
+/* ============================================================
+    NAVBAR (stathero pano)
+         - Krataei logo + basikes selides.
+         - Einai fixed gia na min xanetai otan kanei scroll o xristis.
+         - H ipogramisi deixnei se poia selida vriskomaste me tin ipogramisi.
+   ============================================================ */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+
+    position: fixed;   /* meni stin korifi */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;      /* pio pano apo ola */
+
+    background: rgba(0, 0, 0, 0.55); /* effect gia tholoma */
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* logo */
+.navbar .logo {
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* links tou menu */
+.navbar nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: #ccc;
+    position: relative;
+    transition: 0.4s ease; /* mikro animation */
+}
+
+/* underline effect otan perni apo panw to pontiki */
+.navbar nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: #d4a017;
+    transition: width 0.35s ease;
+}
+
+.navbar nav a:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+/* active selida */
+.navbar nav .active {
+    color: #fff;
+}
+.navbar nav .active::after {
+    width: 100%;
+}
+
+/* CTA koumpi (ksexorizei apo ta alla link) */
+.cta-btn {
+    padding: 8px 14px;
+    background: #d4a017;
+    color: #000 !important;
+    border-radius: 6px;
+    font-weight: 600;
+}
+.navbar nav .cta-btn::after { display: none !important; }
+.navbar nav .cta-btn:hover {
+    background: #f0b928;
+    transform: none !important;
+}
+
+
+
+/* ============================================================
+   HERO SECTION 
+   -megali eikona arxikis.
+   ============================================================ */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+
+    background-image: url("../img/hero.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* skotino layer pano apo tin eikona gia kalytero contrast */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+/* logo mesa sto hero */
+.hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    transform: translateY(-100px); /* metafora gia na kathete kalitera stin selida */
+}
+
+/* koumpi sto hero */
+.hero-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: #d4a017;
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.hero-btn:hover {
+    background: #f0b928;
+    transform: scale(1.05);
+}
+
+
+
+/* ============================================================
+   HIGHLIGHTS SECTION 
+   -4 katigories arxikis
+   ============================================================ */
+
+section.highlights {
+    margin-top: 60px; /* gia xoro meta to hero */
+}
+
+.highlights {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* gia na mporei na paiksei se mikres othones */
+    gap: 40px;
+    padding: 60px 40px;
+}
+
+.highlights .item {
+    width: 250px;
+    text-align: center;
+    overflow: hidden; /* gia na krataei to zoom mesa sto frame kai na ksefeugei */
+    border-radius: 12px;
+}
+
+/* eikones katigorion */
+.highlights img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /*gia na einai tetragoni eikona */
+    object-fit: cover;   /* gia to sosto crop */
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+}
+
+/* zoom effect otan pernaei to pontiki apo panw */
+.highlights .item:hover img {
+    transform: scale(1.08);
+}
+
+/* keno pano apo titlo */
+.highlights .item h3 {
+    margin-top: 20px;
+}
+.highlights .item p {
+    margin-top: 8px;
+}
+
+
+
+/* ============================================================
+   FOOTER 
+   ============================================================ */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #000;
+    color: #aaa;
+    margin-top: 40px;
+}
+
+
+
+/* ============================================================
+   MENU PAGE 
+   -Grid me ola ta proionta.
+   ============================================================ */
+
+.menu-header {
+    text-align: center;
+    padding-top: 120px; /* gia xoro apo navbar */
+    padding-bottom: 25px;
+}
+
+.menu-header h1 {
+    font-size: 42px;
+}
+.menu-header p {
+    color: #bbb;
+    font-size: 18px;
+}
+
+/* titlos katigorias */
+.category-title {
+    font-size: 28px;
+    margin-top: 40px;
+    margin-bottom: 18px;
+    color: #d4a017;
+    text-align: center;
+}
+
+/* grid me proionta */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* to kanei 3 fores, ginete responcive gia an px mpeis apo kinito i tablet (akoma den nomizw oti xriazete alla fanike kalo na mpei) */
+    gap: 22px;
+    padding: 0 40px;
+}
+
+/* "kouti" proiontos */
+.menu-item {
+    background: #1a1a1a;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: 0.25s ease;
+}
+
+.menu-item:hover {
+    background: #222;
+    transform: translateY(-4px);
+}
+
+.menu-item h3 { color: #fff; margin-bottom: 6px; }
+.menu-item p { color: #bbb; margin-bottom: 10px; }
+
+/* timi */
+.price {
+    color: #d4a017;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* responsive gia tablet */
+@media (max-width: 900px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* responsive gia kinito */
+@media (max-width: 600px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+}
+
+
+
+/* ============================================================
+   CONTACT PAGE 
+   -forma, plirofories kai xartis.
+   ============================================================ */
+
+.contact-header {
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 20px;
+}
+
+.contact-header h1 { font-size: 42px; }
+.contact-header p { color: #bbb; }
+
+/* 2 stiles (forma + plirofories) */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px;
+}
+
+/* epikinonia */
+.contact-form,
+.contact-info {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact-form h2,
+.contact-info h2 {
+    margin-bottom: 18px;
+}
+
+/* stixia formas */
+.contact-form label {
+    display: block;
+    margin-bottom: 6px;
+    color: #ccc;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #2a2a2a;
+    border: none;
+    outline: none;
+    color: #eee;
+    resize: none;
+}
+
+/* koumpi apostolis, gia tin wra apla mas paei sto under construction page, sta epomena eksamina tha ginei litourgiko. */
+.form-btn {
+    padding: 12px 20px;
+    background: #d4a017;
+    color: #000;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* "kouti" tou xarti tis google */
+.map-box {
+    margin-top: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* responsive stili px sto pc einai dipla dipla, se kintio tha einai to ena katw apo to allo. */
+@media (max-width: 800px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+}
+
+
+
+/* ============================================================
+   UNDER CONSTRUCTION PAGE
+   ============================================================ */
+
+.construction-box {
+    min-height: 100vh; /* Gia na pinaei oli tin othoni */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.construction-box p {
+    color: #ccc;
+    margin-bottom: 25px;
+}
+
+/* ======================================
+   gallery page
+====================================== */
+
+.page-header {
+    text-align: center;
+    padding-top: 120px;  /* xoros giati exoume fixed navbar */
+    padding-bottom: 25px;
+}
+
+.page-header h1 {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #bbb;
+    font-size: 18px;
+}
+
+/* grid me photos */
+.gallery {
+    padding: 0 40px 40px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.gallery-item {
+    border-radius: 14px;
+    overflow: hidden; /* krataei to zoom mesa sta oria */
+    border: 1px solid rgba(255,255,255,0.08);
+    background: #1a1a1a;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 260px;         /* statheri “karta” */
+    object-fit: cover;     /* crop xwris na xalaei */
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+/* reviews */
+.reviews {
+    padding: 10px 40px 50px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 28px;
+    margin: 30px 0 18px;
+    color: #d4a017;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.review-card {
+    background: #1a1a1a;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.review-card .stars {
+    color: #d4a017;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.review-card h3 {
+    margin-bottom: 8px;
+}
+
+.review-card p {
+    color: #bbb;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        padding: 0 20px 30px;
+    }
+    .reviews {
+        padding: 10px 20px 40px;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .gallery-item img {
+        height: 240px;
+    }
+}

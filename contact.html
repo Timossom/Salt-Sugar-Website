@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salt & Sugar | Επικοινωνία</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ============================================
+         NAVBAR (stathero pano)
+         - Krataei logo + basikes selides.
+         - Einai fixed gia na min xanetai otan kanei scroll o xristis.
+         - To "active" deixnei se poia selida vriskomaste me tin ipogramisi.
+       ============================================ -->
+    <header class="navbar">
+        <div class="logo">Salt & Sugar</div>
+
+        <nav>
+            <a href="index.html">Αρχική</a>
+            <a href="menu.html">Μενού</a>
+              <a href="gallery.html">Gallery</a>
+            <a href="contact.html" class="active">Επικοινωνία</a>
+
+            <!-- CTA koumpi (ksexorizei stin emfanisi gia na travaei to mati) -->
+            <a href="order.html" class="cta-btn">Παράγγειλε Τώρα</a>
+        </nav>
+    </header>
+
+
+
+    <!-- =====================================================
+         HEADER
+         -Emfanizei titlo kai mikri perigrafi.
+       ===================================================== -->
+    <section class="contact-header">
+        <h1>Επικοινωνία</h1>
+        <p>Έλα σε επαφή μαζί μας. Θα χαρούμε να σε εξυπηρετήσουμε.</p>
+    </section>
+
+
+
+    <!-- =====================================================
+         Main periexomeno epikinonias
+         - Xwrizetai se 2 meri tin Forma (aristera) kai tis plirofories (dexia).
+         - ftiaxnete me CSS grid.
+       ===================================================== -->
+    <section class="contact-container">
+
+        <!-- ==========================
+             Forma epikinonias
+             - O xristis mporei na steilei minima bebeba den paei kapou gia tin wra einai gia to effect.
+           ========================== -->
+        <div class="contact-form">
+            <h2>Στείλε μας μήνυμα</h2>
+
+            <form action="#" method="post" novalidate>
+
+                <!-- Pedio onomatos -->
+                <label>Όνομα</label>
+                <input type="text" placeholder="Το όνομά σου" required>
+
+                <!-- Pedio email -->
+                <label>Email</label>
+                <input type="email" placeholder="name@example.com" required>
+
+                <!-- Pedio minimatos -->
+                <label>Μήνυμα</label>
+                <textarea rows="5" placeholder="Γράψε το μήνυμά σου..." required></textarea>
+
+                <!-- Kai ta 3 auta pedia einai required giati allios den tha exei noima na steiles minima xoris email i xoris onoma. -->
+
+                <!-- Koumpi apostolis (gia tin ora san effect mono)) -->
+                <a href="under-construction.html" class="form-btn">Αποστολή</a>
+
+            </form>
+        </div>
+
+        
+        <!-- ==========================
+             Extra info gia to magazi.
+             - Dieuthinsi, tilefono, orario kai Gmaps.
+           ========================== -->
+        <div class="contact-info">
+            <h2>Στοιχεία Καταστήματος</h2>
+
+            <p><strong>Διεύθυνση:</strong> Αγίου Ανδρέου 47, Πάτρα 26221</p>
+            <p><strong>Τηλέφωνο:</strong> 2610270551</p>
+
+            <p><strong>Ωράριο:</strong><br>
+               Δευτέρα με Κυριακή: 12:00 – 00:00
+            </p>
+
+            <!-- Google Maps iframe (embed) -->
+            <div class="map-box">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6266.575814659679!2d21.733610475861962!3d38.24962818466509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135e49c2c0f4c9bd%3A0x10a8d9b447af7731!2zzpnOlc6aIM6UzpXOm86kzpEgMzYwwrAgzqDOrM-Ez4HOsc-C!5e0!3m2!1sel!2snl!4v1764709985297!5m2!1sel!2snl"
+                    width="600" height="250" style="border:0;" 
+                    allowfullscreen="" loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================================
+         FOOTER
+         - Kati aplo, den einai 100% dikes mou idees kai photo opote bazoume disclaimer.
+         ============================================ -->
+    <footer>
+        <p>Salt & Sugar - Demo Project For Educational Purposes Only 2025</p>
+    </footer>
+
+</body>
+</html>
