@@ -761,3 +761,42 @@ footer { line-height: 1.6; }
         align-self: flex-start;
     }
 }
+
+
+/* GR / EN Language Switcher */
+
+.language-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 4px;
+    margin-left: 12px;
+    background: #242424;
+    border: 1px solid #484034;
+    border-radius: 30px;
+}
+
+.language-switch button {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: #bbb;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.language-switch button.selected {
+    background: #d4a017;
+    color: #111;
+}
+
+.language-switch button:hover:not(.selected) {
+    background: #333;
+    color: #fff;
+}
+
