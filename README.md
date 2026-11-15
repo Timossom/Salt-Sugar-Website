@@ -1,5 +1,7 @@
 # Salt & Sugar
 
+**[Live Demo](https://timossom.github.io/Salt-Sugar-Website/)** | **[Releases](https://github.com/Timossom/Salt-Sugar-Website/releases)**
+
 **A responsive restaurant website with an interactive food ordering system.**
 
 Salt & Sugar started as my first HTML/CSS school project and evolved into a JavaScript-powered restaurant ordering demo.
