@@ -2,6 +2,8 @@
 (() => {
     'use strict';
     const KEY = 'salt-sugar-cart-v1';
+    const T = value => window.SaltLanguage?.t(value) || value;
+    const display = value => T(value);
     const euro = n => new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR' }).format(n);
     // Κάθε προϊόν έχει δική του λίστα προαιρετικών extras (τιμές demo).
     // Οι περιγραφές και οι βασικές τιμές παραμένουν αυτές του αρχικού menu.html.
@@ -57,7 +59,7 @@
     const cartCount = () => load().reduce((sum, x) => sum + x.quantity, 0);
     const updateNav = () => {
         document.querySelectorAll('.navbar a[href="order.html"]').forEach(a => {
-            a.textContent = `Παράγγειλε Τώρα (${cartCount()})`;
+            a.textContent = `${T("Παράγγειλε Τώρα")} (${cartCount()})`;
         });
     };
     const make = (tag, className, text) => {
@@ -80,13 +82,13 @@
     const total = () => selected ? (selected.base + chosenExtras.reduce((s, e) => s + e.price, 0)) * quantity : 0;
     const updateModal = () => {
         document.getElementById('product-quantity').textContent = quantity;
-        document.getElementById('confirm-add').textContent = `${editingIndex === null ? 'Προσθήκη' : 'Αποθήκευση'} · ${euro(total())}`;
+        document.getElementById('confirm-add').textContent = `${editingIndex === null ? T('Προσθήκη') : T('Αποθήκευση')} · ${euro(total())}`;
     };
     const addOptions = (container, title, help, choices, isExtra) => {
         container.replaceChildren();
         if (!choices.length) return;
         const section = make('section', 'option-section');
-        section.append(make('h3', '', title), make('p', 'option-help', help));
+        section.append(make('h3', '', T(title)), make('p', 'option-help', T(help)));
         choices.forEach((option, i) => {
             const name = isExtra ? option[0] : option;
             const row = make('div', 'option-row');
@@ -103,7 +105,7 @@
                 }
                 updateModal();
             });
-            label.append(checkbox, make('span', '', name));
+            label.append(checkbox, make('span', '', T(name)));
             row.append(label);
             if (isExtra) row.append(make('span', 'option-price', `+${euro(option[1])}`));
             section.append(row);
@@ -119,8 +121,8 @@
     const openModal = product => {
         selected = product; quantity = 1; removed = []; chosenExtras = []; editingIndex = null;
         previousFocus = document.activeElement;
-        document.getElementById('modal-product-title').textContent = product.name;
-        document.getElementById('modal-product-description').textContent = `${product.description ? product.description + " · " : ""}${euro(product.base)}`;
+        document.getElementById('modal-product-title').textContent = T(product.name);
+        document.getElementById('modal-product-description').textContent = `${product.description ? T(product.description) + " · " : ""}${euro(product.base)}`;
         const note = document.getElementById('product-note');
         const noteLabel = document.querySelector('label[for="product-note"]');
         const examples = {
@@ -135,7 +137,7 @@
         note.hidden = false;
         noteLabel.hidden = false;
         note.value = '';
-        note.placeholder = examples[product.category] || 'Πρόσθεσε οδηγίες για το προϊόν';
+        note.placeholder = T(examples[product.category] || 'Πρόσθεσε οδηγίες για το προϊόν');
         const ingredients = product.category === 'Drinks' ? [] : ingredientsOf(product.description);
         addOptions(document.getElementById('modal-ingredients'), 'Υλικά', 'Αποεπίλεξε όσα δεν θέλεις. Η τιμή δεν αλλάζει.', ingredients, false);
         addOptions(document.getElementById('modal-extras'), 'Πρόσθετα υλικά', 'Προαιρετικές προσθήκες με επιπλέον χρέωση (τιμές demo).', (extrasByProduct[product.name] || []).map(name => [name, extraPrices[name]]), true);
@@ -196,7 +198,7 @@
                 else cart.push(item);
             }
             const edited = editingIndex !== null;
-            save(cart); updateNav(); closeModal(); renderCart(); toast(edited ? 'Οι αλλαγές αποθηκεύτηκαν' : `${quantity} × ${selected.name} προστέθηκε στο καλάθι`);
+            save(cart); updateNav(); closeModal(); renderCart(); toast(edited ? T('Οι αλλαγές αποθηκεύτηκαν') : `${quantity} × ${T(selected.name)} ${T('προστέθηκε στο καλάθι')}`);
         });
     }
     const cartItems = document.getElementById('cart-items');
@@ -218,11 +220,11 @@
             const unit = item.base + item.extras.reduce((s, e) => s + e.price, 0);
             const entry = make('article', 'cart-entry');
             const top = make('div', 'cart-entry-top');
-            top.append(make('h3', '', item.name), make('strong', '', euro(unit * item.quantity)));
+            top.append(make('h3', '', T(item.name)), make('strong', '', euro(unit * item.quantity)));
             entry.append(top);
-            if (item.removed.length) entry.append(make('p', 'cart-entry-detail', `Χωρίς: ${item.removed.join(', ')}`));
-            if (item.extras.length) entry.append(make('p', 'cart-entry-detail', `Extras: ${item.extras.map(e => `${e.name} (+${euro(e.price)})`).join(', ')}`));
-            if (item.note) entry.append(make('p', 'cart-entry-detail', `Σχόλιο: ${item.note}`));
+            if (item.removed.length) entry.append(make('p', 'cart-entry-detail', `${T('Χωρίς:')} ${item.removed.map(T).join(', ')}`));
+            if (item.extras.length) entry.append(make('p', 'cart-entry-detail', `Extras: ${item.extras.map(e => `${T(e.name)} (+${euro(e.price)})`).join(', ')}`));
+            if (item.note) entry.append(make('p', 'cart-entry-detail', `${T('Σχόλιο:')} ${item.note}`));
             const actions = make('div', 'cart-entry-actions');
             const qty = make('div', 'quantity-control');
             const minus = make('button', '', '−'); minus.type = 'button'; minus.setAttribute('aria-label', `Μείωση ${item.name}`);
@@ -230,27 +232,28 @@
             const change = delta => { const updated = load(); updated[index].quantity += delta; if (updated[index].quantity < 1) updated.splice(index, 1); save(updated); renderCart(); updateNav(); };
             minus.addEventListener('click', () => change(-1)); plus.addEventListener('click', () => { if (item.quantity < 99) change(1); });
             qty.append(minus, make('span', '', String(item.quantity)), plus);
-            const remove = make('button', '', 'Αφαίρεση'); remove.type = 'button';
+            const remove = make('button', '', T('Αφαίρεση')); remove.type = 'button';
             remove.addEventListener('click', () => { const updated = load(); updated.splice(index, 1); save(updated); renderCart(); updateNav(); });
-            const edit = make('button', 'cart-edit-btn', 'Επεξεργασία'); edit.type = 'button';
+            const edit = make('button', 'cart-edit-btn', T('Επεξεργασία')); edit.type = 'button';
             edit.addEventListener('click', () => editCartItem(index));
             actions.append(qty, edit, remove); entry.append(actions); cartItems.append(entry);
         });
     };
     document.getElementById('clear-cart')?.addEventListener('click', () => {
-        if (confirm('Θέλεις να αδειάσεις το καλάθι;')) { save([]); renderCart(); updateNav(); }
+        if (confirm(T('Θέλεις να αδειάσεις το καλάθι;'))) { save([]); renderCart(); updateNav(); }
     });
     const checkout = document.getElementById('demo-checkout');
     checkout?.addEventListener('click', () => {
         const cart = load();
         if (!cart.length) return;
         const totalAmount = cart.reduce((sum, item) => sum + (item.base + item.extras.reduce((n, e) => n + e.price, 0)) * item.quantity, 0);
-        if (!confirm(`Επιβεβαίωση demo παραγγελίας ${euro(totalAmount)};\nΔεν θα γίνει πληρωμή ή αποστολή.`)) return;
+        if (!confirm(window.SaltLanguage?.get() === 'en' ? `Confirm demo order for ${euro(totalAmount)}?\nNo payment or order submission will take place.` : `Επιβεβαίωση demo παραγγελίας ${euro(totalAmount)};\nΔεν θα γίνει πληρωμή ή αποστολή.`)) return;
         const confirmation = document.getElementById('checkout-confirmation');
         confirmation.hidden = false;
-        confirmation.textContent = `Η δοκιμαστική παραγγελία ολοκληρώθηκε! Σύνολο: ${euro(totalAmount)}. Δεν πραγματοποιήθηκε πληρωμή ή αποστολή.`;
+        confirmation.textContent = window.SaltLanguage?.get() === 'en' ? `Demo order complete! Total: ${euro(totalAmount)}. No payment or order submission took place.` : `Η δοκιμαστική παραγγελία ολοκληρώθηκε! Σύνολο: ${euro(totalAmount)}. Δεν πραγματοποιήθηκε πληρωμή ή αποστολή.`;
         save([]); renderCart(); updateNav();
         confirmation.scrollIntoView({behavior:'smooth',block:'center'});
     });
+    document.addEventListener('salt-language-change', () => { updateNav(); renderCart(); if (selected && modal && !modal.hidden) { document.getElementById('modal-product-title').textContent = T(selected.name); document.getElementById('modal-product-description').textContent = `${selected.description ? T(selected.description) + ' · ' : ''}${euro(selected.base)}`; document.getElementById('product-note').placeholder = T(({Burgers:'π.χ. καλοψημένο μπιφτέκι',Sandwiches:'π.χ. καλά ζεσταμένο','Αλμυρές Κρέπες':'π.χ. καλά ψημένη κρέπα','Γλυκιές Κρέπες':'π.χ. λίγη πραλίνα',Sides:'π.χ. τη σως ξεχωριστά',Drinks:'π.χ. χωρίς πάγο ή με πάγο ξεχωριστά'})[selected.category] || 'Πρόσθεσε οδηγίες για το προϊόν'); addOptions(document.getElementById('modal-ingredients'), 'Υλικά', 'Αποεπίλεξε όσα δεν θέλεις. Η τιμή δεν αλλάζει.', selected.category === 'Drinks' ? [] : ingredientsOf(selected.description || ''), false); addOptions(document.getElementById('modal-extras'), 'Πρόσθετα υλικά', 'Προαιρετικές προσθήκες με επιπλέον χρέωση (τιμές demo).', (extrasByProduct[selected.name] || []).map(name => [name,extraPrices[name]]), true); updateModal(); } });
     updateNav(); renderCart();
 })();

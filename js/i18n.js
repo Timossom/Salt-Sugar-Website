@@ -1,0 +1,258 @@
+/* Salt & Sugar — Greek / English interface. Canonical cart data remains in Greek. */
+(() => {
+    'use strict';
+    const dictionary = {
+  "Αρχική": "Home",
+  "Μενού": "Menu",
+  "Επικοινωνία": "Contact",
+  "Παράγγειλε Τώρα": "Order Now",
+  "Δες το Μενού": "View Menu",
+  "Πήγαινε στο Μενού": "Go to Menu",
+  "Συνέχεια αγορών": "Continue Shopping",
+  "Κρέπες • Burgers • Sandwiches • Sides • Drinks": "Crepes • Burgers • Sandwiches • Sides • Drinks",
+  "Γλυκιές ή αλμυρές, φτιαγμένες στη στιγμή.": "Sweet or savory, freshly made to order.",
+  "Ζουμερά, φρεσκοψημένα & 100% Black Angus.": "Juicy, freshly grilled & 100% Black Angus.",
+  "Φρέσκα υλικά & καθημερινές επιλογές.": "Fresh ingredients & everyday favorites.",
+  "Για αυτούς που θέλουν το κάτι έξτρα.": "For those who want a little extra.",
+  "Διάλεξε αυτό που θες, όλα φτιάχνονται στη στιγμή.": "Choose your favorite, freshly prepared to order.",
+  "Αλμυρές Κρέπες": "Savory Crepes",
+  "Γλυκιές Κρέπες": "Sweet Crepes",
+  "Έλα σε επαφή μαζί μας. Θα χαρούμε να σε εξυπηρετήσουμε.": "Get in touch with us. We would love to hear from you.",
+  "Στείλε μας μήνυμα": "Send us a message",
+  "Όνομα": "Name",
+  "Μήνυμα": "Message",
+  "Αποστολή": "Send",
+  "Στοιχεία Καταστήματος": "Restaurant Details",
+  "Διεύθυνση:": "Address:",
+  "Τηλέφωνο:": "Phone:",
+  "Ωράριο:": "Opening Hours:",
+  "Μερικές φωτογραφίες από τον χώρο μας και τα αγαπημένα μας πιάτα! .": "A few photos of our space and favorite dishes!",
+  "Κριτικές Πελατών": "Customer Reviews",
+  "“Οι καλύτερες κρέπρες στην Πάτρα!”": "“The best crepes in Patras!”",
+  "“Φιλικό και γρήγορο service, τέλειο vibe.”": "“Friendly, fast service and a great atmosphere.”",
+  "“Το burger ήταν απίστευτο, θα ξαναέρθω”": "“The burger was incredible, I will be back!”",
+  "Το καλάθι σου": "Your Cart",
+  "Δες τα προϊόντα σου, τις επιλογές και το συνολικό ποσό.": "Review your items, options, and total.",
+  "Τα προϊόντα σου": "Your Items",
+  "Το καλάθι σου είναι άδειο": "Your cart is empty",
+  "Διάλεξε κάτι νόστιμο από το μενού για να ξεκινήσεις.": "Choose something delicious from the menu to get started.",
+  "Σύνοψη παραγγελίας": "Order Summary",
+  "Προϊόντα": "Items",
+  "Σύνολο": "Total",
+  "Εκπαιδευτικό demo. Δεν πραγματοποιείται πληρωμή ή αποστολή παραγγελίας.": "Educational demo. No payments or real orders are processed.",
+  "+ Συνέχεια αγορών": "+ Continue Shopping",
+  "Επιβεβαίωση demo παραγγελίας": "Confirm Demo Order",
+  "Άδειασμα καλαθιού": "Clear Cart",
+  "ΦΤΙΑΞ' ΤΟ ΟΠΩΣ ΘΕΣ": "MAKE IT YOUR WAY",
+  "Σχόλιο (προαιρετικό)": "Special instructions (optional)",
+  "Η σελίδα βρίσκεται υπό κατασκευή 🚧": "This page is under construction 🚧",
+  "Ευχαριστούμε για την υπομονή σου! Επιστρέφουμε σύντομα.": "Thank you for your patience! We will be back soon.",
+  "Επιστροφή στην αρχική": "Back to Home",
+  "Νερό 500ml": "Water 500ml",
+  "Νερό 1500ml": "Water 1500ml",
+  "Λουξ Πορτοκαλάδα / Λεμονάδα 330ml": "Loux Orange / Lemon Soda 330ml",
+  "Μπύρα Lager 330ml": "Lager Beer 330ml",
+  "Μπύρα Weiss 330ml": "Wheat Beer 330ml",
+  "Γιώργος Π.": "George P.",
+  "Μαρία Κ..": "Maria K.",
+  "Νίκος Α.": "Nikos A.",
+  "Πρόσθεσε οδηγίες για το προϊόν": "Add special instructions",
+  "Προσαρμογή και προσθήκη στο καλάθι": "Customize and add to cart",
+  "Προσαρμογή και προσθήκη": "Customize and add",
+  "Άνοιγμα μενού": "Open navigation",
+  "Κλείσιμο μενού": "Close navigation",
+  "Κλείσιμο": "Close",
+  "Μείωση ποσότητας": "Decrease quantity",
+  "Αύξηση ποσότητας": "Increase quantity",
+  "Η σελίδα βρίσκεται υπό κατασκευή": "This page is under construction",
+  "Πάτρα": "Patras",
+  "Δευτέρα": "Monday",
+  "Τρίτη": "Tuesday",
+  "Τετάρτη": "Wednesday",
+  "Πέμπτη": "Thursday",
+  "Παρασκευή": "Friday",
+  "Σάββατο": "Saturday",
+  "Κυριακή": "Sunday",
+  "Τυρί, κοτομπουκιές, πατάτες, κίτρινη σως.": "Cheese, chicken bites, fries, yellow sauce.",
+  "Τυρί, χωριάτικο λουκάνικο, φέτα, πιπεριά, ντομάτα, ρίγανη.": "Cheese, country-style sausage, feta, pepper, tomato, oregano.",
+  "Philadelphia, κοτομπουκιές, μπέικον, ντομάτα, BBQ.": "Cream cheese, chicken bites, bacon, tomato, BBQ sauce.",
+  "Τυρί, κοτομπουκιές, μπέικον, μανιτάρια, καραμελωμένα κρεμμύδια, μουστάρδα, BBQ.": "Cheese, chicken bites, bacon, mushrooms, caramelized onions, mustard, BBQ sauce.",
+  "Τυρί, μπέικον, μανιτάρια, sticks, ροζ σως.": "Cheese, bacon, mushrooms, potato sticks, pink sauce.",
+  "Τυρί, μπέικον, καραμελωμένο κρεμμύδι, chili mayo.": "Cheese, bacon, caramelized onion, chili mayo.",
+  "Cheddar, κοτόπουλο, BBQ, jalapeños, μπέικον.": "Cheddar, chicken, BBQ sauce, jalapeños, bacon.",
+  "Nutella, μπανάνα, φράουλα, άχνη.": "Nutella, banana, strawberry, powdered sugar.",
+  "Καραμέλα, μπανάνα, μπισκότο, σαντιγί.": "Caramel, banana, biscuit, whipped cream.",
+  "Λευκή & μαύρη σοκολάτα, Oreo.": "White and dark chocolate, Oreo.",
+  "Nutella, Ferrero Rocher, φουντούκι.": "Nutella, Ferrero Rocher, hazelnut.",
+  "Lotus spread, μπισκότο, λευκή σοκολάτα.": "Lotus spread, biscuit, white chocolate.",
+  "Πραλίνα, Kinder Bueno, λευκή σοκολάτα.": "Chocolate praline, Kinder Bueno, white chocolate.",
+  "Αλατισμένη καραμέλα, σοκολάτα, καραμελωμένα αμύγδαλα.": "Salted caramel, chocolate, caramelized almonds.",
+  "100% Black Angus 150g, κρεμμύδι, cheddar, μπέικον, BBQ, brioche.": "100% Black Angus 150g, onion, cheddar, bacon, BBQ, brioche.",
+  "Διπλό smash burger, διπλό cheddar, πίκλες, onion-mustard blend.": "Double smash burger, double cheddar, pickles, onion-mustard blend.",
+  "Μπιφτέκι μοσχαρίσιο, φέτα, λαχανικά, tzatziki mayo.": "Beef patty, feta, vegetables, tzatziki mayo.",
+  "Black Angus, μανιτάρια, παρμεζάνα, truffle mayo.": "Black Angus, mushrooms, parmesan, truffle mayo.",
+  "Τραγανό κοτόπουλο, cheddar, πίκλες, honey mustard mayo.": "Crispy chicken, cheddar, pickles, honey mustard mayo.",
+  "Γαλοπούλα καπνιστή, μπέικον, cheddar, μαρούλι, mustard-mayo.": "Smoked turkey, bacon, cheddar, lettuce, mustard mayo.",
+  "Κοτόπουλο, μαρούλι, παρμεζάνα, caesar sauce.": "Chicken, lettuce, parmesan, Caesar dressing.",
+  "Χοιρινό λεπτοκομμένο, cheddar, κρεμμύδι, BBQ.": "Thinly sliced pork, cheddar, onion, BBQ sauce.",
+  "Φέτα, ντομάτα, ελιά, αγγούρι, ρίγανη.": "Feta, tomato, olives, cucumber, oregano.",
+  "Τραγανό κοτόπουλο, iceberg, πίκλες, honey-mustard.": "Crispy chicken, iceberg lettuce, pickles, honey mustard.",
+  "Κλασικές τηγανητές πατάτες.": "Classic French fries.",
+  "Πατάτες με cheddar sauce, μπέικον.": "Fries with cheddar sauce and bacon.",
+  "Κοτομπουκιές crispy με σως επιλογής.": "Crispy chicken bites with your choice of sauce.",
+  "Ψωμάκι με βούτυρο σκόρδου & mozzarella.": "Garlic butter bread with mozzarella.",
+  "Τυρί": "Cheese",
+  "κοτομπουκιές": "chicken bites",
+  "Κοτομπουκιές": "Chicken bites",
+  "πατάτες": "fries",
+  "κίτρινη σως": "yellow sauce",
+  "χωριάτικο λουκάνικο": "country-style sausage",
+  "φέτα": "feta",
+  "Φέτα": "Feta",
+  "πιπεριά": "pepper",
+  "ντομάτα": "tomato",
+  "ρίγανη": "oregano",
+  "μπέικον": "bacon",
+  "Μπέικον": "Bacon",
+  "μανιτάρια": "mushrooms",
+  "Μανιτάρια": "Mushrooms",
+  "καραμελωμένα κρεμμύδια": "caramelized onions",
+  "Καραμελωμένα κρεμμύδια": "Caramelized onions",
+  "μουστάρδα": "mustard",
+  "ροζ σως": "pink sauce",
+  "καραμελωμένο κρεμμύδι": "caramelized onion",
+  "κοτόπουλο": "chicken",
+  "Κοτόπουλο": "Chicken",
+  "μπανάνα": "banana",
+  "Μπανάνα": "Banana",
+  "φράουλα": "strawberry",
+  "άχνη": "powdered sugar",
+  "Καραμέλα": "Caramel",
+  "μπισκότο": "biscuit",
+  "Μπισκότο": "Biscuit",
+  "σαντιγί": "whipped cream",
+  "Σαντιγί": "Whipped cream",
+  "Λευκή & μαύρη σοκολάτα": "White & dark chocolate",
+  "φουντούκι": "hazelnut",
+  "Φουντούκι": "Hazelnut",
+  "Πραλίνα": "Praline",
+  "Αλατισμένη καραμέλα": "Salted caramel",
+  "σοκολάτα": "chocolate",
+  "καραμελωμένα αμύγδαλα": "caramelized almonds",
+  "κρεμμύδι": "onion",
+  "πίκλες": "pickles",
+  "Μπιφτέκι μοσχαρίσιο": "Beef patty",
+  "λαχανικά": "vegetables",
+  "Τραγανό κοτόπουλο": "Crispy chicken",
+  "Γαλοπούλα καπνιστή": "Smoked turkey",
+  "μαρούλι": "lettuce",
+  "Χοιρινό λεπτοκομμένο": "Thinly sliced pork",
+  "ελιά": "olives",
+  "αγγούρι": "cucumber",
+  "Κλασικές τηγανητές πατάτες": "Classic French fries",
+  "Πατάτες με cheddar sauce": "Fries with cheddar sauce",
+  "Κοτομπουκιές crispy με σως επιλογής": "Crispy chicken bites with sauce of your choice",
+  "Ψωμάκι με βούτυρο σκόρδου & mozzarella": "Garlic butter bread with mozzarella",
+  "Extra τυρί": "Extra cheese",
+  "Extra cheddar": "Extra cheddar",
+  "Extra σως": "Extra sauce",
+  "Extra μπιφτέκι": "Extra patty",
+  "Extra πραλίνα": "Extra praline",
+  "Φράουλες": "Strawberries",
+  "Παγωτό": "Ice cream",
+  "Oreo": "Oreo",
+  "Lotus μπισκότο": "Lotus biscuit",
+  "Extra καραμέλα": "Extra caramel",
+  "Extra σοκολάτα": "Extra chocolate",
+  "Τριμμένη παρμεζάνα": "Grated parmesan",
+  "Υλικά": "Ingredients",
+  "Πρόσθετα υλικά": "Extras",
+  "Αποεπίλεξε όσα δεν θέλεις. Η τιμή δεν αλλάζει.": "Uncheck ingredients you do not want. The price stays the same.",
+  "Προαιρετικές προσθήκες με επιπλέον χρέωση (τιμές demo).": "Optional extras at additional cost (demo prices).",
+  "Προσθήκη": "Add to Cart",
+  "Αποθήκευση": "Save Changes",
+  "Αφαίρεση": "Remove",
+  "Επεξεργασία": "Edit",
+  "Χωρίς:": "Without:",
+  "Σχόλιο:": "Note:",
+  "Οι αλλαγές αποθηκεύτηκαν": "Changes saved",
+  "προστέθηκε στο καλάθι": "added to cart",
+  "Θέλεις να αδειάσεις το καλάθι;": "Do you want to clear your cart?",
+  "Δεν ήταν δυνατή η αποθήκευση του καλαθιού.": "Unable to save the cart.",
+  "π.χ. καλοψημένο μπιφτέκι": "e.g. well-done burger patty",
+  "π.χ. καλά ζεσταμένο": "e.g. heated thoroughly",
+  "π.χ. καλά ψημένη κρέπα": "e.g. well-cooked crepe",
+  "π.χ. λίγη πραλίνα": "e.g. a little praline",
+  "π.χ. τη σως ξεχωριστά": "e.g. sauce on the side",
+  "π.χ. χωρίς πάγο ή με πάγο ξεχωριστά": "e.g. no ice or ice on the side",
+  "Philadelphia": "Cream cheese",
+  "BBQ": "BBQ sauce",
+  "sticks": "potato sticks",
+  "chili mayo": "chili mayo",
+  "Cheddar": "Cheddar",
+  "jalapeños": "jalapeños",
+  "Nutella": "Nutella",
+  "Ferrero Rocher": "Ferrero Rocher",
+  "Lotus spread": "Lotus spread",
+  "λευκή σοκολάτα": "white chocolate",
+  "Kinder Bueno": "Kinder Bueno",
+  "100% Black Angus 150g": "100% Black Angus 150g",
+  "cheddar": "cheddar",
+  "brioche": "brioche",
+  "Διπλό smash burger": "Double smash burger",
+  "διπλό cheddar": "double cheddar",
+  "onion-mustard blend": "onion-mustard blend",
+  "tzatziki mayo": "tzatziki mayo",
+  "Black Angus": "Black Angus",
+  "παρμεζάνα": "parmesan",
+  "truffle mayo": "truffle mayo",
+  "honey mustard mayo": "honey mustard mayo",
+  "mustard-mayo": "mustard mayo",
+  "caesar sauce": "Caesar dressing",
+  "iceberg": "iceberg lettuce",
+  "honey-mustard": "honey mustard"
+};
+    const key = 'salt-sugar-language';
+    let language = localStorage.getItem(key) === 'en' ? 'en' : 'el';
+    const originalText = new WeakMap();
+    const originalAttrs = new WeakMap();
+    const t = (value) => language === 'en' ? (dictionary[value] || value) : value;
+    const translateNode = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            if (!originalText.has(node)) originalText.set(node, node.nodeValue);
+            const original = originalText.get(node);
+            const trimmed = original.trim();
+            if (trimmed && dictionary[trimmed]) node.nodeValue = original.replace(trimmed, t(trimmed));
+            else node.nodeValue = original;
+            return;
+        }
+        if (node.nodeType !== Node.ELEMENT_NODE || ['SCRIPT','STYLE','TEXTAREA','INPUT'].includes(node.tagName)) return;
+        for (const attr of ['placeholder','aria-label','title']) {
+            if (!node.hasAttribute(attr)) continue;
+            let saved = originalAttrs.get(node);
+            if (!saved) { saved = {}; originalAttrs.set(node,saved); }
+            if (!(attr in saved)) saved[attr] = node.getAttribute(attr);
+            node.setAttribute(attr,t(saved[attr]));
+        }
+        for (const child of node.childNodes) translateNode(child);
+    };
+    const apply = () => {
+        document.documentElement.lang = language;
+        translateNode(document.body);
+        document.querySelectorAll('[data-lang]').forEach(button => {
+            const active = button.dataset.lang === language;
+            button.setAttribute('aria-pressed', String(active));
+            button.classList.toggle('selected',active);
+        });
+        document.dispatchEvent(new CustomEvent('salt-language-change'));
+    };
+    window.SaltLanguage = { t, get: () => language, apply };
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-lang]').forEach(button => button.addEventListener('click', () => {
+            language = button.dataset.lang;
+            localStorage.setItem(key,language);
+            apply();
+        }));
+        apply();
+    });
+})();

@@ -712,3 +712,10 @@ footer { line-height: 1.6; }
     .menu-item, .menu-item[data-category] .add-to-cart-btn,
     .hero-btn, .form-btn, .demo-checkout-btn, .add-confirm-btn { transition: none; }
 }
+
+/* Greek / English language selector */
+.language-switch { display:inline-flex; align-items:center; gap:3px; margin-left:18px; padding:3px; border:1px solid rgba(212,160,23,.55); border-radius:8px; vertical-align:middle; }
+.language-switch button { appearance:none; border:0; background:transparent; color:#ddd; padding:7px 9px; font:600 13px Poppins,Arial,sans-serif; border-radius:5px; cursor:pointer; }
+.language-switch button.selected { background:#d4a017; color:#111; }
+.language-switch button:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+@media (max-width:800px) { .language-switch { margin:12px 0 6px; align-self:flex-start; } }

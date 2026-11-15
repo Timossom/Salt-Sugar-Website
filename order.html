@@ -13,14 +13,14 @@
        ============================================ -->
 <header class="navbar">
 <div class="logo">Salt &amp; Sugar</div>
-<button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span><span></span></button>
-        <nav id="site-navigation">
+<button aria-controls="site-navigation" aria-expanded="false" aria-label="Άνοιγμα μενού" class="nav-toggle" type="button"><span></span><span></span><span></span></button>
+<nav id="site-navigation">
 <a href="index.html">Αρχική</a>
 <a href="menu.html">Μενού</a>
 <a href="gallery.html">Gallery</a>
 <a href="contact.html">Επικοινωνία</a>
 <a class="cta-btn active" href="order.html">Παράγγειλε Τώρα</a>
-</nav>
+<div aria-label="Language / Γλώσσα" class="language-switch" role="group"><button aria-pressed="true" data-lang="el" type="button">GR</button><button aria-pressed="false" data-lang="en" type="button">EN</button></div></nav>
 </header>
 <!-- ============================================
          ORDER / CART
@@ -28,13 +28,13 @@
          - Aplo layout
          - Demo checkout με JavaScript, χωρίς πραγματική πληρωμή
        ============================================ -->
-<main class="order-page"><div class="order-page-heading"><p class="modal-eyebrow">SALT &amp; SUGAR</p><h1>Το καλάθι σου</h1><p>Δες τα προϊόντα σου, τις επιλογές και το συνολικό ποσό.</p></div><div class="order-layout"><section class="cart-panel"><h2>Τα προϊόντα σου <span id="cart-item-count">(0)</span></h2><div id="cart-items"></div><div class="cart-empty" id="cart-empty"><h3>Το καλάθι σου είναι άδειο</h3><p>Διάλεξε κάτι νόστιμο από το μενού για να ξεκινήσεις.</p><a class="hero-btn" href="menu.html">Πήγαινε στο Μενού</a></div></section><aside class="cart-summary"><h2>Σύνοψη παραγγελίας</h2><div class="summary-line"><span>Προϊόντα</span><strong id="cart-subtotal">€0,00</strong></div><div class="summary-line summary-total"><span>Σύνολο</span><strong id="cart-total">€0,00</strong></div><p class="cart-disclaimer">Εκπαιδευτικό demo. Δεν πραγματοποιείται πληρωμή ή αποστολή παραγγελίας.</p><a class="continue-shopping" href="menu.html">+ Συνέχεια αγορών</a><button class="demo-checkout-btn" id="demo-checkout" type="button" disabled>Επιβεβαίωση demo παραγγελίας</button><button class="clear-cart" id="clear-cart" type="button">Άδειασμα καλαθιού</button></aside></div></main><div id="checkout-confirmation" class="checkout-confirmation" role="status" hidden></div>
+<main class="order-page"><div class="order-page-heading"><p class="modal-eyebrow">SALT &amp; SUGAR</p><h1>Το καλάθι σου</h1><p>Δες τα προϊόντα σου, τις επιλογές και το συνολικό ποσό.</p></div><div class="order-layout"><section class="cart-panel"><h2>Τα προϊόντα σου <span id="cart-item-count">(0)</span></h2><div id="cart-items"></div><div class="cart-empty" id="cart-empty"><h3>Το καλάθι σου είναι άδειο</h3><p>Διάλεξε κάτι νόστιμο από το μενού για να ξεκινήσεις.</p><a class="hero-btn" href="menu.html">Πήγαινε στο Μενού</a></div></section><aside class="cart-summary"><h2>Σύνοψη παραγγελίας</h2><div class="summary-line"><span>Προϊόντα</span><strong id="cart-subtotal">€0,00</strong></div><div class="summary-line summary-total"><span>Σύνολο</span><strong id="cart-total">€0,00</strong></div><p class="cart-disclaimer">Εκπαιδευτικό demo. Δεν πραγματοποιείται πληρωμή ή αποστολή παραγγελίας.</p><a class="continue-shopping" href="menu.html">+ Συνέχεια αγορών</a><button class="demo-checkout-btn" disabled="" id="demo-checkout" type="button">Επιβεβαίωση demo παραγγελίας</button><button class="clear-cart" id="clear-cart" type="button">Άδειασμα καλαθιού</button></aside></div></main><div class="checkout-confirmation" hidden="" id="checkout-confirmation" role="status"></div>
 <!-- ============================================
          FOOTER
        ============================================ -->
 <footer>
 <p>Salt &amp; Sugar - Demo Project For Educational Purposes Only 2025</p>
 </footer>
-<div class="order-modal" hidden="" id="product-modal"><div class="order-modal-backdrop" data-close-modal=""></div><section aria-labelledby="modal-product-title" aria-modal="true" class="order-dialog" role="dialog"><button aria-label="Κλείσιμο" class="modal-close" data-close-modal="" type="button">×</button><p class="modal-eyebrow">ΦΤΙΑΞ' ΤΟ ΟΠΩΣ ΘΕΣ</p><h2 id="modal-product-title"></h2><p class="modal-description" id="modal-product-description"></p><div id="modal-ingredients"></div><div id="modal-extras"></div><label class="order-note-label" for="product-note">Σχόλιο (προαιρετικό)</label><textarea id="product-note" maxlength="250" placeholder="Πρόσθεσε οδηγίες για το προϊόν" rows="2"></textarea><div class="modal-bottom"><div class="quantity-control"><button aria-label="Μείωση ποσότητας" id="quantity-minus" type="button">−</button><span id="product-quantity">1</span><button aria-label="Αύξηση ποσότητας" id="quantity-plus" type="button">+</button></div><button class="add-confirm-btn" id="confirm-add" type="button">Προσθήκη · €0,00</button></div></section></div><div aria-live="polite" class="cart-toast" id="cart-toast" role="status"></div><script defer="" src="js/order.js"></script>    <script defer src="js/navigation.js"></script>
-</body>
+<div class="order-modal" hidden="" id="product-modal"><div class="order-modal-backdrop" data-close-modal=""></div><section aria-labelledby="modal-product-title" aria-modal="true" class="order-dialog" role="dialog"><button aria-label="Κλείσιμο" class="modal-close" data-close-modal="" type="button">×</button><p class="modal-eyebrow">ΦΤΙΑΞ' ΤΟ ΟΠΩΣ ΘΕΣ</p><h2 id="modal-product-title"></h2><p class="modal-description" id="modal-product-description"></p><div id="modal-ingredients"></div><div id="modal-extras"></div><label class="order-note-label" for="product-note">Σχόλιο (προαιρετικό)</label><textarea id="product-note" maxlength="250" placeholder="Πρόσθεσε οδηγίες για το προϊόν" rows="2"></textarea><div class="modal-bottom"><div class="quantity-control"><button aria-label="Μείωση ποσότητας" id="quantity-minus" type="button">−</button><span id="product-quantity">1</span><button aria-label="Αύξηση ποσότητας" id="quantity-plus" type="button">+</button></div><button class="add-confirm-btn" id="confirm-add" type="button">Προσθήκη · €0,00</button></div></section></div><div aria-live="polite" class="cart-toast" id="cart-toast" role="status"></div><script defer="" src="js/order.js"></script> <script defer="" src="js/navigation.js"></script>
+<script defer="" src="js/i18n.js"></script></body>
 </html>

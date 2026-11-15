@@ -5,13 +5,13 @@ document.querySelectorAll('.navbar').forEach(navbar => {
     if (!button || !links) return;
     const close = () => {
         button.setAttribute('aria-expanded', 'false');
-        button.setAttribute('aria-label', 'Άνοιγμα μενού');
+        button.setAttribute('aria-label', window.SaltLanguage?.t('Άνοιγμα μενού') || 'Άνοιγμα μενού');
         links.classList.remove('nav-open');
     };
     button.addEventListener('click', () => {
         const opening = button.getAttribute('aria-expanded') !== 'true';
         button.setAttribute('aria-expanded', String(opening));
-        button.setAttribute('aria-label', opening ? 'Κλείσιμο μενού' : 'Άνοιγμα μενού');
+        button.setAttribute('aria-label', opening ? (window.SaltLanguage?.t('Κλείσιμο μενού') || 'Κλείσιμο μενού') : (window.SaltLanguage?.t('Άνοιγμα μενού') || 'Άνοιγμα μενού'));
         links.classList.toggle('nav-open', opening);
     });
     links.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
